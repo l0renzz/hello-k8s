@@ -3,5 +3,16 @@ package main
 var name = ""
 
 func main() {
-	NewRouter()
+	router := NewRouter()
+	createPaths(router)
+	// attach the router to a http.Server
+	err := router.Engine.Run(":8080")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func createPaths(router Router) {
+	// create path to GET name (default path /)
+	router.GetName()
 }
