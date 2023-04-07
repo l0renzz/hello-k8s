@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-k8s
-          image: hello-k8s-go
+          image: hello-k8s-go:1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
