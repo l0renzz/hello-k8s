@@ -15,4 +15,6 @@ func main() {
 func createPaths(router Router) {
 	// create path to GET name (default path /)
 	router.GetName()
+	// create path to POST a name (path /name/nameToSet)
+	router.SetName()
 }

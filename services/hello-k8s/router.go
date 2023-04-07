@@ -10,6 +10,14 @@ func NewRouter() Router {
 	return Router{Engine: gin.Default()}
 }
 
+func (r *Router) SetName() {
+	r.Engine.POST("/name/:name", func(c *gin.Context) {
+		newName := c.Param("name")
+		name = newName
+		c.String(200, "Name set successfully")
+	})
+}
+
 func (r *Router) GetName() {
 	r.Engine.GET("/", func(c *gin.Context) {
 		var message string
