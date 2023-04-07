@@ -17,4 +17,6 @@ func createPaths(router Router) {
 	router.GetName()
 	// create path to POST a name (path /name/nameToSet)
 	router.SetName()
+	// handle no route
+	router.NoRoute()
 }

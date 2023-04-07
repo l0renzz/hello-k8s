@@ -30,3 +30,9 @@ func (r *Router) GetName() {
 		c.String(200, message)
 	})
 }
+
+func (r *Router) NoRoute() {
+	r.Engine.NoRoute(func(c *gin.Context) {
+		c.String(404, "Page not found")
+	})
+}
