@@ -39,6 +39,12 @@ deploy() {
       echo -e "\033[32m\nUpdating new image...\033[0m"
       kubectl set image deployment/hello-k8s hello-k8s=$IMAGE_NAME:$VERSION
     fi
+    echo -e "\033[33m\n\n######################################\033[0m"
+    echo -e "\033[33mDeploy completed:\033[0m"
+    echo -e "1 - Open another terminal and execute \033[33m'minikube service hello-k8s --url'\033[0m to get URL"
+    echo -e "2 - Open the URL in the browser to check the last name"
+    echo -e "2 - To set a new name, make a curl request to the path /name/yourName (e.g. curl -X POST http://yourIP:yourPort/name/Lorenzo)"
+    echo -e "\033[33m######################################\033[0m"
   fi
 }
 
@@ -66,6 +72,7 @@ deploy first
 if command -v fswatch >/dev/null 2>&1; then
   echo -e "\033[33m\n\n######################################\033[0m"
   echo -e "\033[33mWaiting changes to perform a deploy...\033[0m"
+  echo -e "If you update hello-k8s, a new deploy will begin..."
   echo -e "\033[33m######################################\033[0m"
   fswatch -r -l 5 "$SERVICE_PATH" | while read; do
     debounce
